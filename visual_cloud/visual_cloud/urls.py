@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 """visual_cloud URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,9 +14,15 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = [
+urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-]
+    url(r'', include('visual_cloud.visual_cloud_front_end.urls',
+        namespace='visual_cloud_front_end',
+        app_name='visual_cloud_front_end')),
+    url(r'^rest/', include('visual_cloud.visual_cloud_rest_api.urls',
+        namespace='visual_cloud_rest_api',
+        app_name='visual_cloud_rest_api')),
+)
