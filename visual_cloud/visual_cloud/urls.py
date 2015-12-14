@@ -20,9 +20,14 @@ from django.contrib import admin
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('visual_cloud.visual_cloud_front_end.urls',
+        # namespace='/',
         namespace='visual_cloud_front_end',
-        app_name='visual_cloud_front_end')),
+        #name='front'
+        )
+    ),
     url(r'^rest/', include('visual_cloud.visual_cloud_rest_api.urls',
         namespace='visual_cloud_rest_api',
-        app_name='visual_cloud_rest_api')),
+        #namespace='rest',
+        #app_name='rest'
+        )),
 )

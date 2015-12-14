@@ -1,5 +1,30 @@
 <html>
 <body>
+
 	test hello world - front end
+	{% if  user.is_authenticated %}
+
+	User is authenticated
+
+	{% else %}
+
+	User is not authenticated
+	<form action="{% url 'visual_cloud_rest_api:login' %}" method="post">
+	{% csrf_token %}
+		<div>
+			<label for="login_ak">AK</label>
+			<input id="login_ak" name="login_ak" type="text" value="90UNFNG16GIGP9AX9MV8"/>
+		</div>
+		<div>
+			<label for="login_sk">SK</label>
+			<input id="login_sk" name="login_sk" type="text" value="ZQM7M9OVDH6WOubuL9zFTWnOlcnrwJdX4tTQGut1"/>
+		</div>
+		<div>
+			<label for="login_region">Region</label>
+			<input id="login_region" name="login_region" type="text" value="eu-west-2"/>
+		</div>
+		<input type="submit" value="Submit">
+	</form>
+	{% endif %}
 </body>
 </html>
