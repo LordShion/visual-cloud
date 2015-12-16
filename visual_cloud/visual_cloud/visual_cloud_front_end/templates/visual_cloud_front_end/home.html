@@ -2,14 +2,21 @@
 <body>
 
 	test hello world - front end
-	{% if  user.is_authenticated %}
+	{% if  logged %}
 
 	User is authenticated
+
+	<form action="{% url 'visual_cloud_front_end:logout' %}" method="post">
+	{% csrf_token %}
+
+		<input type="submit" value="Logout">
+		
+	</form>
 
 	{% else %}
 
 	User is not authenticated
-	<form action="{% url 'visual_cloud_rest_api:login' %}" method="post">
+	<form action="{% url 'visual_cloud_front_end:home' %}" method="post">
 	{% csrf_token %}
 		<div>
 			<label for="login_ak">AK</label>
@@ -24,6 +31,11 @@
 			<input id="login_region" name="login_region" type="text" value="eu-west-2"/>
 		</div>
 		<input type="submit" value="Submit">
+		{% if error %}
+		<div>
+			{{ error }}
+		</div>
+		{% endif %}
 	</form>
 	{% endif %}
 </body>

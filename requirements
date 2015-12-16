@@ -1,3 +1,5 @@
-apache-libcloud==0.19.0
-backports.ssl-match-hostname==3.4.0.2
-Django==1.8.7
+apache-libcloud>=0.19.0
+backports.ssl-match-hostname>=3.4.0.2
+Django>=1.8.7
+requests>=2.9.0
+

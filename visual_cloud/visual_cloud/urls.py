@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'', include('visual_cloud.visual_cloud_front_end.urls',
         # namespace='/',
         namespace='visual_cloud_front_end',
-        #name='front'
+        #app_name='front'
         )
     ),
     url(r'^rest/', include('visual_cloud.visual_cloud_rest_api.urls',
