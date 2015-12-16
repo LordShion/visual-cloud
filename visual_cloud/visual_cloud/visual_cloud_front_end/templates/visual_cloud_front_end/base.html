@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<html lang="{{ LANGUAGE }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="author" content="Filipe Silva">
+    
+    <link rel="stylesheet" href="{% static "style/visualcloud_main_style.css" %}" type="text/css" media="screen">
+    <!-- Google Font Source Sans Pro-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet" type="text/css">
+    <title>Visual Cloud</title>
+  </head>
+  <body>
+
+      <!--header-->
+      <header class="main-header">
+        <div class="content-wrapper">
+
+        </div>
+      </header>
+      <!--//header-->
+
+      <main class="body_content main-pattern tpl-columns">
+      {% block "content" %}
+      {% endblock %}
+      </main>
+
+
+
+      <!--//page_content-->
+      <!--footer-->
+      <footer class="main-footer">
+            <div class="first-row">
+              <div class="content-wrapper">
+                <div class="row">
+
+
+
+                </div>
+              </div>
+            </div>
+            <!-- desktop column_footer_link-->
+          </footer>
+  </body>
+</html>

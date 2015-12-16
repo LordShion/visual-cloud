@@ -1,5 +1,5 @@
 import types
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST, require_GET
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
@@ -28,7 +28,10 @@ def login(request):
  # render(request, 'visual_cloud_front_end:home',{'logged':True})
     else:
         print "problem with connection"
-        request.session.pop("connection", None)
+        if 'connection' in request.session.keys():
+            request.session.pop("connection", None)
         # return redirect(reverse('visual_cloud_front_end:home'), {'logged':False, 'error':'problem with connection'})
         return False
+
+
 
