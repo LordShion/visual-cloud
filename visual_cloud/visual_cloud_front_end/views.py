@@ -1,29 +1,34 @@
 import requests
 import json
 from django.shortcuts import render, redirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views.decorators.http import require_POST, require_GET
 from visual_cloud.visual_cloud_rest_api.views import login
 from visual_cloud.visual_cloud_front_end import forms
-# Create your views here.
+
+
+#  Create your views here.
 def home(request):
     formlogin = None
     error = None
     if request.method == "GET":
             print("home")
             logged = False
-            if 'connection' in request.session.keys():
-                print "connection is in request"
-                logged = True
+            if hasattr(request, 'session'):
+                if 'connection' in request.session.keys():
+                    print("connection is in request")
+                    logged = True
 
+                else:
+                    print("connection is not in request")
+                    formlogin = forms.LoginForm
             else:
-                print "connection is not in request"
                 formlogin = forms.LoginForm
 
     if request.method == "POST":
-        print "login front"
+        print("login front")
         response = login(request) 
-        print response
+        print(response)
         print("home")
         logged = response
         if not logged:

@@ -14,20 +14,13 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import patterns, include, url
+from django.urls import include, path
 from django.contrib import admin
 
-urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('visual_cloud.visual_cloud_front_end.urls',
-        # namespace='/',
-        namespace='visual_cloud_front_end',
-        #app_name='front'
-        )
-    ),
-    url(r'^rest/', include('visual_cloud.visual_cloud_rest_api.urls',
-        namespace='visual_cloud_rest_api',
-        #namespace='rest',
-        #app_name='rest'
-        )),
-)
+
+urlpatterns = [
+    #path(r'^admin/$', admin.site.urls),
+
+    path(r'', include(('visual_cloud_front_end.urls', 'visual_cloud_front_end'), namespace='visual_cloud_front_end')),
+    path(r'rest/', include(('visual_cloud_rest_api.urls', 'visual_cloud_rest_api'), namespace='visual_cloud_rest_api'))
+]
